@@ -9,5 +9,6 @@ public class Main {
 
       if(!Check.isValidCode()) System.out.println("Teezak");
       System.out.println(Att.secretCode[1]);
+      System.out.println("haha");
    }
 }
