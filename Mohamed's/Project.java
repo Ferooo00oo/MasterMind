@@ -65,7 +65,7 @@ public class Project {
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.project;
+package MasterMind;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,31 +73,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Project{
-        private static String secretCode;
+    private static String secretCode;
     private static int attempts = 0;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Mastermind");
+            ImageIcon logo = new ImageIcon("hamada.jpg");
+            frame.setIconImage(logo.getImage());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
+            frame.setSize(800, 300);
             frame.setLayout(new BorderLayout());
+            frame.setResizable(true);
 
             // Panel for input
             JPanel inputPanel = new JPanel();
-            JLabel label = new JLabel("Enter your secret code (4 colors): ");
-            JTextField inputField = new JTextField(10);
+            JLabel label = new JLabel();
+            JTextField inputField = new JTextField(12);
             JButton submitButton = new JButton("Submit");
+            label.setText("Code Maker, Enter your secret code (4 colors): ");
 
             inputPanel.add(label);
             inputPanel.add(inputField);
             inputPanel.add(submitButton);
-            frame.add(inputPanel, BorderLayout.NORTH);
+            frame.add(inputPanel, BorderLayout.SOUTH);
 
             // Panel for feedback
             JTextArea feedbackArea = new JTextArea();
             feedbackArea.setEditable(false);
-            frame.add(new JScrollPane(feedbackArea), BorderLayout.CENTER);
+            feedbackArea.setFont(new Font("Noto Color Emoji" , Font.BOLD , 15));
+            frame.add(new JScrollPane(feedbackArea));
 
             // Action listener for the submit button
             submitButton.addActionListener(new ActionListener() {
@@ -112,6 +117,7 @@ public class Project{
                         } else {
                             feedbackArea.append("Secret code set! Now, guess the code.\n");
                             inputField.setText("");
+                            label.setText("Code breaker, Try to guess the secret colors -Remember you have only 10 Guesses !!!-");
                         }
                     } else {
                         // Guess input
@@ -123,13 +129,15 @@ public class Project{
                             int[] feedback = TheFeedback.Feedback(secretCode, guess);
                             int blackPegs = feedback[0];
                             int whitePegs = feedback[1];
-                            feedbackArea.append("Attempt " + attempts + ": " + guess + " - Feedback: " + blackPegs + " Black Pegs, " + whitePegs + " White Pegs\n");
+                            feedbackArea.append("Attempt " + attempts + " of " + Att.getMAX_ATTEMPTS() + "   -   " + guess + "\nFeedback: " + blackPegs + " Black Pegs, " + whitePegs + " White Pegs\n");
 
-                            if (blackPegs == att.getCODE_LENGTH()) {
+                            if (blackPegs == Att.getCODE_LENGTH()) {
                                 feedbackArea.append("Congratulations, you win! 😊\n");
-                                secretCode = null; // Reset for a new game
-                                attempts = 0; // Reset attempts
-                            } else if (attempts >= att.getMAX_ATTEMPTS()) {
+                                Timer timer = new Timer(3000, w -> {
+                                    System.exit(0); // Exit the application
+                                });
+                                timer.start();
+                            } else if (attempts >= Att.getMAX_ATTEMPTS()) {
                                 feedbackArea.append("Unfortunately, you ran out of attempts. The secret code was: " + secretCode + " 😢\n");
                                 secretCode = null; // Reset for a new game
                                 attempts = 0; // Reset attempts
