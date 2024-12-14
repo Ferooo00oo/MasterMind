@@ -25,8 +25,8 @@ public class Project {
         //Secret Color
         //عشان نستدعيهم بسهوله
         String SC = in.nextLine().toUpperCase();
-        boolean j = Check.IsValidCode(SC);
-        if (!j) {
+        
+        if (!Check.IsValidCode(SC)) {
             System.out.println("Please type only 4 characters  and within the colors 'R, G, B, Y, P, O'");
             return ;
         }
@@ -35,11 +35,11 @@ public class Project {
         System.out.println("_________________________________________________________________________________");
         System.out.println("\nCode Breaker, Guess The Secret Code! 'Hint: You have only 10 Attempts'.");
         int attempts = 0 ;
-        while(attempts < att.getMAX_ATTEMPTS()){
+        while(attempts < Att.getMAX_ATTEMPTS()){
             System.out.print(attempts + 1 + "/10 - Enter your guess (4 colors): ");
             String trys = in.nextLine().toUpperCase();
-            boolean i = Check.IsValidCode(trys);
-            if (!i) {
+            
+            if (!Check.IsValidCode(trys)) {
                 System.out.println("Please type only 4 characters 'Without Spaces' and within the colors 'R, G, B, Y, P, O'");
                 return ;
             }
