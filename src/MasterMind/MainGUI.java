@@ -71,7 +71,7 @@ public class MainGUI {
 
             if(Att.getSecretCode() == null){
                 timer.stop();
-                Att.setSecretCode(inputField.getText().toLowerCase());
+                Att.setSecretCode(inputField.getText().toUpperCase());
                 if(!Check.IsValidCode(Att.getSecretCode())){
                     JLabel invalidSecret = new JLabel("Invalid Secret Color!! Please Type 4 Colors Separated by Spaces, and From 'Red, Green, Blue, Yellow, Orange, Purple'.");
                     invalidSecret.setFont(new Font("Arial", Font.BOLD, 16));
@@ -106,7 +106,7 @@ public class MainGUI {
                     int x = Att.getAttempts();
                     x++;
                     Att.setAttempts(x);
-                    int[] feedback = TheFeedback.Feedback(Att.getSecretCode(), Att.getGuess().toLowerCase());
+                    int[] feedback = TheFeedback.Feedback(Att.getSecretCode(), Att.getGuess());
                     int blackPegs = feedback[0];
                     int whitePegs = feedback[1];
                     JLabel feedbackLabel = new JLabel("Attempt " + Att.getAttempts() + " of " + Att.getMAX_ATTEMPTS() + "   -   " + Att.getGuess() + "        Feedback: " + blackPegs + " Black Pegs, " + whitePegs + " White Pegs\n");
