@@ -46,7 +46,7 @@ public class MainGUI {
         
         JPanel feedBackPanel = new JPanel();
         feedBackPanel.setBackground(new Color(0xd8dce3));
-        feedBackPanel.setBounds(2,90,935,500);
+        feedBackPanel.setBounds(0,90,935,500);
         JLabel welcome = new JLabel("Welcome to MasterMind!!    Available colors: Red, Green, Blue, Yellow, Orange, Purple");
         JLabel win = new JLabel("Congratulations, you win! 😊");
         welcome.setFont(new Font("Arial", Font.BOLD, 18));
@@ -71,7 +71,7 @@ public class MainGUI {
 
             if(Att.getSecretCode() == null){
                 timer.stop();
-                Att.setSecretCode(inputField.getText());
+                Att.setSecretCode(inputField.getText().toLowerCase());
                 if(!Check.IsValidCode(Att.getSecretCode())){
                     JLabel invalidSecret = new JLabel("Invalid Secret Color!! Please Type 4 Colors Separated by Spaces, and From 'Red, Green, Blue, Yellow, Orange, Purple'.");
                     invalidSecret.setFont(new Font("Arial", Font.BOLD, 16));
@@ -106,7 +106,7 @@ public class MainGUI {
                     int x = Att.getAttempts();
                     x++;
                     Att.setAttempts(x);
-                    int[] feedback = TheFeedback.Feedback(Att.getSecretCode(), Att.getGuess());
+                    int[] feedback = TheFeedback.Feedback(Att.getSecretCode(), Att.getGuess().toLowerCase());
                     int blackPegs = feedback[0];
                     int whitePegs = feedback[1];
                     JLabel feedbackLabel = new JLabel("Attempt " + Att.getAttempts() + " of " + Att.getMAX_ATTEMPTS() + "   -   " + Att.getGuess() + "        Feedback: " + blackPegs + " Black Pegs, " + whitePegs + " White Pegs\n");

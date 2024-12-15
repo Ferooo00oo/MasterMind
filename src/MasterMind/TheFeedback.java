@@ -9,28 +9,28 @@ public class TheFeedback {
         int whitePegs = 0;
         List<String> secretList = new ArrayList<>();
         List<String> trysList = new ArrayList<>();
-        String[] secretColor = SC.split(" ");
-        String[] guess = trys.split(" ");
+        String[] secretColors = SC.split(" ");
+        String[] guessedColors = trys.split(" ");
 
         //Black pegs
         for (int i = 0; i < Att.getCODE_LENGTH(); i++) {
-            if (secretColor[i].equalsIgnoreCase(guess[i])) {
+            if (secretColors[i].equalsIgnoreCase(guessedColors[i])) {
                 blackPegs++;
             }
             else {
-                secretList.add(secretColor[i]);
-                trysList.add(guess[i]);
+                secretList.add(secretColors[i]);
+                trysList.add(guessedColors[i]);
             }
         }
         
         //White pegs
-        for (int i = 0; i < trysList.size(); i++) {
-            if (secretList.contains(trysList.get(i))) {
+        for (String c : trysList) {
+            if (secretList.contains(c)) {
                 whitePegs++;
-                secretList.remove(trysList.get(i));
+                secretList.remove(c);
             }
         }
         
-        return new int[] {blackPegs , whitePegs}; 
+        return new int[]{blackPegs, whitePegs}; 
     }
 }
