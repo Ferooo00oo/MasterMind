@@ -13,7 +13,7 @@ public class TheFeedback {
         String[] guessedColors = trys.split(" ");
 
         //Black pegs
-        for (int i = 0; i < Att.getCODE_LENGTH(); i++) {
+        for (int i = 0; i < Att.getCodeLength(); i++) {
             if (secretColors[i].equalsIgnoreCase(guessedColors[i])) {
                 blackPegs++;
             }
