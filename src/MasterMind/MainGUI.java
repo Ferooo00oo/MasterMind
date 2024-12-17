@@ -61,7 +61,7 @@ public class MainGUI {
         Frame.add(feedBackPanel);
         
         
-        Timer timer = new Timer(3000, w -> {
+        Timer timer = new Timer(10000, w -> {
             feedBackPanel.removeAll();
             feedBackPanel.add(welcome);
             feedBackPanel.add(welcome2);
