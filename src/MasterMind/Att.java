@@ -2,11 +2,30 @@ package MasterMind;
 
 public class Att {
     private static final String[] colors = {"Red" , "Green" , "Blue" , "Yellow" , "Orange" , "Purple"};
-    private static final int CODE_LENGTH = 4 ;
-    private static final int MAX_ATTEMPTS = 10 ;
     private static String secretCode;
     private static String guess;
     private static int attempts = 0;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static int codeLength; // Default length
+    private static int maxAttempts; // Default attempts
+
+    public static int getCodeLength() {
+        return codeLength;
+    }
+
+    public static void setCodeLength(int length) {
+        codeLength = length;
+    }
+
+    public static int getMaxAttempts() {
+        return maxAttempts;
+    }
+
+    public static void setMaxAttempts(int attempts) {
+        maxAttempts = attempts;
+    }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static String getSecretCode() {
         return secretCode;
@@ -34,16 +53,5 @@ public class Att {
     
     public static String[] getColors() {
         return colors;
-    }
-    
-    public static int getCODE_LENGTH() {
-        return CODE_LENGTH;
-    }
-
-    public static int getMAX_ATTEMPTS() {
-        return MAX_ATTEMPTS;
-    }
-    
-    
-    
+    }    
 }
