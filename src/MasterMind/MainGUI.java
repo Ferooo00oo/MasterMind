@@ -33,6 +33,9 @@ public class MainGUI {
         JLabel inputLabel = new JLabel("Code maker, Enter Your Secret Color : ");
         JTextField inputField = new JTextField(12);
         JButton sButton = new JButton("Submit");
+        sButton.setBackground(new Color(0x4b15a1));
+        sButton.setFont(new Font("Arial" , Font.BOLD , 15));
+        sButton.setForeground(Color.white);
         
         JPanel inputPanel = new JPanel();
         inputPanel.setBounds(2,24, 930, 40);
@@ -47,19 +50,27 @@ public class MainGUI {
         JPanel feedBackPanel = new JPanel();
         feedBackPanel.setBackground(new Color(0xd8dce3));
         feedBackPanel.setBounds(0,90,935,500);
-        JLabel welcome = new JLabel("Welcome to MasterMind!!    Available colors: Red, Green, Blue, Yellow, Orange, Purple");
-        JLabel win = new JLabel("Congratulations, you win! 😊");
+        JLabel welcome = new JLabel("                            Welcome to MasterMind!!                              ");
         welcome.setFont(new Font("Arial", Font.BOLD, 18));
+        JLabel welcome2 = new JLabel("Available colors: Red, Green, Blue, Yellow, Orange, Purple (Select only 4 Colors)");
+        welcome2.setFont(new Font("Arial", Font.BOLD, 18));
+        JLabel win = new JLabel("Congratulations, you win! 😊");
         win.setFont(new Font("Noto Color Emoji", Font.BOLD, 20));
         feedBackPanel.add(welcome);
+        feedBackPanel.add(welcome2);
         Frame.add(feedBackPanel);
         
         
         Timer timer = new Timer(3000, w -> {
             feedBackPanel.removeAll();
             feedBackPanel.add(welcome);
+            feedBackPanel.add(welcome2);
             feedBackPanel.revalidate();
             feedBackPanel.repaint();
+            inputPanel.add(inputField);
+            inputPanel.add(sButton);
+            inputPanel.revalidate();
+            inputPanel.repaint();
             inputLabel.setText("Code maker, Enter Your Secret Color : ");
         });
 
@@ -83,8 +94,8 @@ public class MainGUI {
                     feedBackPanel.repaint();
                 } else {
                     feedBackPanel.removeAll();
-                    JLabel player_2 = new JLabel("The Code Maker has Set the Colors, Code Breaker, Start Guessing!");
-                    player_2.setFont(new Font("Arial", Font.BOLD, 18));
+                    JLabel player_2 = new JLabel("The Code Maker has Set the Colors, Code Breaker, Start Guessing!    'Remember: You have only " + Att.getMAX_ATTEMPTS() + " Attempts'");
+                    player_2.setFont(new Font("Arial", Font.BOLD, 16));
                     feedBackPanel.add(player_2);
                     inputField.setText("");
                     inputLabel.setText("Enter Your Guess : ");
@@ -118,6 +129,11 @@ public class MainGUI {
                         feedBackPanel.add(win);
                         feedBackPanel.revalidate(); // بتعمل ريفريش للبانيل
                         feedBackPanel.repaint();
+                        inputPanel.remove(inputField);
+                        inputPanel.remove(sButton);
+                        inputLabel.setText("YOU WIN !!!!!!!");
+                        inputPanel.revalidate();
+                        inputPanel.repaint();
                         Timer timer = new Timer(3000, w -> {
                             System.exit(0); // Exit the application
                         });
@@ -132,6 +148,11 @@ public class MainGUI {
                         Att.setSecretCode(null);
                         feedBackPanel.revalidate(); // بتعمل ريفريش للبانيل
                         feedBackPanel.repaint();
+                        inputPanel.remove(sButton);
+                        inputPanel.remove(inputField);
+                        inputLabel.setText("YOU LOST !!!!!!!");
+                        inputPanel.revalidate();
+                        inputPanel.repaint();
                         
                         timer.start();
                     }
@@ -140,6 +161,15 @@ public class MainGUI {
             inputField.setText("");
             feedBackPanel.revalidate();
             feedBackPanel.repaint();
+            }
+        });
+
+
+        inputField.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "submit");
+        inputField.getActionMap().put("submit", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sButton.doClick();
             }
         });
 
