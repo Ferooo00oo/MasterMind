@@ -30,7 +30,7 @@ public class MainGUI {
         Frame.getContentPane().setBackground(new Color(0x182a47));
 
         JLabel inputLabel = new JLabel("Code maker, Enter Your Secret Color : ");
-        JTextField inputField = new JTextField(12);
+        JTextField inputField = new JTextField(19);
         JButton sButton = new JButton("Submit");
         sButton.setBackground(new Color(0x4b15a1));
         sButton.setFont(new Font("Arial" , Font.BOLD , 15));
@@ -56,8 +56,6 @@ public class MainGUI {
         welcome.setFont(new Font("Arial", Font.BOLD, 18));
         JLabel welcome2 = new JLabel("Available colors: Red, Green, Blue, Yellow, Orange, Purple");
         welcome2.setFont(new Font("Arial", Font.BOLD, 18)); 
-        JLabel win = new JLabel("Congratulations, you win! 😊");
-        win.setFont(new Font("Noto Color Emoji", Font.BOLD, 20));
         feedBackPanel.add(welcome);
         feedBackPanel.add(welcome2);
         Frame.add(feedBackPanel);
@@ -161,7 +159,8 @@ public class MainGUI {
     
                         if(blackPegs == Att.getCodeLength()){
                             feedBackPanel.removeAll();
-                            feedBackPanel.add(win);
+                            JLabel win = new JLabel("Congratulations, you win! 😊    The secret code was: " + Att.getSecretCode() + " 😢");
+                            win.setFont(new Font("Noto Color Emoji", Font.BOLD, 20));
                             feedBackPanel.revalidate(); // بتعمل ريفريش للبانيل
                             feedBackPanel.repaint();
                             inputPanel.remove(inputField);
