@@ -159,7 +159,7 @@ public class MainGUI {
     
                         if(blackPegs == Att.getCodeLength()){
                             feedBackPanel.removeAll();
-                            JLabel win = new JLabel("Congratulations, you win! 😊    The secret code was: " + Att.getSecretCode() + " 😢");
+                            JLabel win = new JLabel("Congratulations, you win! 😊    The secret code was: " + Att.getSecretCode());
                             win.setFont(new Font("Noto Color Emoji", Font.BOLD, 20));
                             feedBackPanel.revalidate(); // بتعمل ريفريش للبانيل
                             feedBackPanel.repaint();
