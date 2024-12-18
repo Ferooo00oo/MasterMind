@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class TheFeedback {
-    protected static int[] Feedback(String SC , String trys){
+    static int[] Feedback(String SC , String trys){
         int blackPegs = 0;
         int whitePegs = 0;
         List<String> secretList = new ArrayList<>();
