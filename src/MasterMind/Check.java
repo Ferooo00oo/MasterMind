@@ -2,7 +2,7 @@ package MasterMind;
 
 public class Check {
     
-        protected static boolean IsValidCode(String code){
+        static boolean IsValidCode(String code){
             String[] codeArray = code.split(" ");
             if (codeArray.length == Att.getCodeLength()) {
                 for (String c : codeArray) {
