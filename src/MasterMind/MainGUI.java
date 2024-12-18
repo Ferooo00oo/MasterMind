@@ -233,7 +233,7 @@ public class MainGUI {
                             inputPanel.repaint();
 
                             // Exit the application
-                            Timer timer = new Timer(3000, _ -> {
+                            Timer timer = new Timer(3000, w -> {
                                 System.exit(0); 
                             });
                             timer.start();
@@ -260,7 +260,7 @@ public class MainGUI {
                             inputPanel.repaint();
 
                             // Exit the application
-                            Timer timer = new Timer(8000, _ -> {
+                            Timer timer = new Timer(8000, w -> {
                                 System.exit(0); 
                             });
                             timer.start();
@@ -282,7 +282,6 @@ public class MainGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sButton.doClick();
-                diffButton.doClick();
             }
         });
 
